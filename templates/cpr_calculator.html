@@ -1,0 +1,1145 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>CPR Calculator | Chemora</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+  </head>
+
+  <body>
+    <main class="page calculator-page">
+      <!-- HEADER -->
+
+      <header class="page-header">
+        <a href="/cpr" class="back-button"> ← </a>
+
+        <div>
+          <p class="eyebrow">CORROSION</p>
+          <h1>CPR Calculator</h1>
+        </div>
+      </header>
+
+      <!-- FORMULA -->
+
+      <section class="calculator-formula-card">
+        <p class="formula-title">CORROSION PENETRATION RATE</p>
+
+        <div class="calculator-equation">
+          <span> CPR = </span>
+
+          <span class="fraction">
+            <span class="numerator"> K × W </span>
+
+            <span class="fraction-line"></span>
+
+            <span class="denominator"> D × A × T </span>
+          </span>
+        </div>
+
+        <button
+          type="button"
+          class="explain-button"
+          onclick="toggleExplanation()"
+        >
+          <span>ⓘ</span>
+          Explain Each Term
+          <span id="explain-arrow">⌄</span>
+        </button>
+
+        <div id="term-explanation" class="term-explanation">
+          <div class="term-row">
+            <strong>CPR</strong>
+            <span>Corrosion Penetration Rate</span>
+          </div>
+
+          <div class="term-row">
+            <strong>K</strong>
+            <span>Constant based on the selected CPR unit</span>
+          </div>
+
+          <div class="term-row">
+            <strong>W</strong>
+            <span>Weight loss of the metal</span>
+          </div>
+
+          <div class="term-row">
+            <strong>D</strong>
+            <span>Density of the metal</span>
+          </div>
+
+          <div class="term-row">
+            <strong>A</strong>
+            <span>Exposed surface area</span>
+          </div>
+
+          <div class="term-row">
+            <strong>T</strong>
+            <span>Exposure time</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- CALCULATOR FORM -->
+
+      <section class="calculator-section">
+        <!-- CPR OUTPUT UNIT -->
+
+        <div class="input-group">
+          <label for="cpr-unit"> CPR Output Unit </label>
+
+          <div class="select-wrapper">
+            <select id="cpr-unit">
+              <option value="mmpy">mm/year</option>
+
+              <option value="mpy">mils/year</option>
+            </select>
+          </div>
+
+          <p class="input-help">
+            This determines the CPR unit and automatically selects K.
+          </p>
+        </div>
+
+        <!-- UNKNOWN -->
+
+        <div class="input-group">
+          <label for="calculate-for"> What do you want to calculate? </label>
+
+          <div class="select-wrapper">
+            <select id="calculate-for">
+              <option value="cpr">CPR — Corrosion Penetration Rate</option>
+
+              <option value="w">W — Weight Loss</option>
+
+              <option value="d">D — Density</option>
+
+              <option value="a">A — Area</option>
+
+              <option value="t">T — Time</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- INPUTS -->
+
+        <div id="inputs-container">
+          <!-- W -->
+
+          <div class="calculator-input" id="input-w">
+            <label for="value-w"> W — Weight Loss </label>
+
+            <div class="input-with-unit">
+              <input
+                type="number"
+                id="value-w"
+                placeholder="Enter value"
+                step="any"
+              />
+
+              <div class="select-wrapper unit-select">
+                <select id="unit-w">
+                  <option value="mg">mg</option>
+
+                  <option value="g" selected>g</option>
+
+                  <option value="kg">kg</option>
+
+                  <option value="lb">lb</option>
+
+                  <option value="tonne">metric ton</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- D -->
+
+          <div class="calculator-input" id="input-d">
+            <label for="value-d"> D — Density </label>
+
+            <div class="input-with-unit">
+              <input
+                type="number"
+                id="value-d"
+                placeholder="Enter value"
+                step="any"
+              />
+
+              <div class="select-wrapper unit-select">
+                <select id="unit-d">
+                  <option value="gcm3" selected>g/cm³</option>
+
+                  <option value="kgm3">kg/m³</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- A -->
+
+          <div class="calculator-input" id="input-a">
+            <label for="value-a"> A — Area </label>
+
+            <div class="input-with-unit">
+              <input
+                type="number"
+                id="value-a"
+                placeholder="Enter value"
+                step="any"
+              />
+
+              <div class="select-wrapper unit-select">
+                <select id="unit-a">
+                  <option value="cm2" selected>cm²</option>
+
+                  <option value="mm2">mm²</option>
+
+                  <option value="m2">m²</option>
+
+                  <option value="in2">in²</option>
+
+                  <option value="ft2">ft²</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- T -->
+
+          <div class="calculator-input" id="input-t">
+            <label for="value-t"> T — Time </label>
+
+            <div class="input-with-unit">
+              <input
+                type="number"
+                id="value-t"
+                placeholder="Enter value"
+                step="any"
+              />
+
+              <div class="select-wrapper unit-select">
+                <select id="unit-t">
+                  <option value="seconds">seconds</option>
+
+                  <option value="minutes">minutes</option>
+
+                  <option value="hours">hours</option>
+
+                  <option value="days" selected>days</option>
+
+                  <option value="weeks">weeks</option>
+
+                  <option value="years">years</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- CPR INPUT -->
+
+          <div class="calculator-input" id="input-cpr" style="display: none">
+            <label for="value-cpr"> CPR </label>
+
+            <div class="input-with-unit">
+              <input
+                type="number"
+                id="value-cpr"
+                placeholder="Enter value"
+                step="any"
+              />
+
+              <div class="select-wrapper unit-select">
+                <select id="unit-cpr">
+                  <option value="mmpy">mm/year</option>
+
+                  <option value="mpy">mils/year</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CALCULATE -->
+
+        <button
+          type="button"
+          id="calculate-button"
+          class="calculate-button"
+          onclick="calculateCPR()"
+        >
+          <span>Calculate</span>
+          <span>→</span>
+        </button>
+      </section>
+
+      <!-- RESULT -->
+
+      <section id="result-section" class="result-section" style="display: none">
+        <div class="result-header">
+          <p class="section-label">RESULT</p>
+
+          <h2 id="result-title">CPR</h2>
+        </div>
+
+        <div class="result-main">
+          <div id="result-value" class="result-value">—</div>
+
+          <div id="result-unit" class="result-unit">—</div>
+        </div>
+
+        <!-- EQUIVALENTS -->
+
+        <div id="equivalent-section" class="equivalent-section">
+          <h3>Equivalent</h3>
+
+          <div id="equivalent-values"></div>
+        </div>
+
+        <!-- STEP BY STEP -->
+
+        <div class="steps-section">
+          <h3>Step-by-Step Calculation</h3>
+
+          <div id="calculation-steps"></div>
+        </div>
+      </section>
+
+      <footer>
+        <p>Made for Engineering Students</p>
+      </footer>
+    </main>
+
+    <script>
+      /* =========================================
+       TERM EXPLANATION
+       ========================================= */
+
+      function toggleExplanation() {
+        const box = document.getElementById("term-explanation");
+        const arrow = document.getElementById("explain-arrow");
+
+        box.classList.toggle("show");
+
+        if (box.classList.contains("show")) {
+          arrow.textContent = "⌃";
+        } else {
+          arrow.textContent = "⌄";
+        }
+      }
+
+      /* =========================================
+       UNIT CONVERSIONS
+       ========================================= */
+
+      function weightToMg(value, unit) {
+        const conversions = {
+          mg: 1,
+          g: 1000,
+          kg: 1000000,
+          lb: 453592.37,
+          tonne: 1000000000,
+        };
+
+        return value * conversions[unit];
+      }
+
+      function densityToGcm3(value, unit) {
+        if (unit === "kgm3") {
+          return value / 1000;
+        }
+
+        return value;
+      }
+
+      function areaToStandard(value, unit, cprUnit) {
+        /*
+            For mm/year:
+            standard area = cm²
+
+            For mils/year:
+            standard area = in²
+        */
+
+        if (cprUnit === "mmpy") {
+          const toCm2 = {
+            mm2: 0.01,
+            cm2: 1,
+            m2: 10000,
+            in2: 6.4516,
+            ft2: 929.0304,
+          };
+
+          return value * toCm2[unit];
+        } else {
+          const toIn2 = {
+            mm2: 0.0015500031,
+            cm2: 0.15500031,
+            m2: 1550.0031,
+            in2: 1,
+            ft2: 144,
+          };
+
+          return value * toIn2[unit];
+        }
+      }
+
+      function timeToHours(value, unit) {
+        const conversions = {
+          seconds: 1 / 3600,
+          minutes: 1 / 60,
+          hours: 1,
+          days: 24,
+          weeks: 168,
+          years: 8760,
+        };
+
+        return value * conversions[unit];
+      }
+
+      function cprToMmpy(value, unit) {
+        if (unit === "mmpy") {
+          return value;
+        }
+
+        return value * 0.0254;
+      }
+
+      /* =========================================
+       RESULT CONVERSIONS
+       ========================================= */
+
+      function formatNumber(value) {
+        if (!Number.isFinite(value)) {
+          return "—";
+        }
+
+        if (Math.abs(value) >= 1000000) {
+          return value.toExponential(4);
+        }
+
+        return Number(value.toFixed(6)).toLocaleString("en-IN");
+      }
+
+      function weightEquivalents(mg) {
+        return [
+          `${formatNumber(mg)} mg`,
+          `${formatNumber(mg / 1000)} g`,
+          `${formatNumber(mg / 1000000)} kg`,
+          `${formatNumber(mg / 453592.37)} lb`,
+          `${formatNumber(mg / 1000000000)} metric ton`,
+        ];
+      }
+
+      function densityEquivalents(gcm3) {
+        return [
+          `${formatNumber(gcm3)} g/cm³`,
+          `${formatNumber(gcm3 * 1000)} kg/m³`,
+        ];
+      }
+
+      function areaEquivalents(area, cprUnit) {
+        if (cprUnit === "mmpy") {
+          return [
+            `${formatNumber(area)} cm²`,
+            `${formatNumber(area * 100)} mm²`,
+            `${formatNumber(area / 10000)} m²`,
+            `${formatNumber(area / 6.4516)} in²`,
+            `${formatNumber(area / 929.0304)} ft²`,
+          ];
+        } else {
+          return [
+            `${formatNumber(area)} in²`,
+            `${formatNumber(area * 6.4516)} cm²`,
+            `${formatNumber(area * 645.16)} mm²`,
+            `${formatNumber(area / 1550.0031)} m²`,
+            `${formatNumber(area / 144)} ft²`,
+          ];
+        }
+      }
+
+      function timeEquivalents(hours) {
+        return [
+          `${formatNumber(hours)} hours`,
+          `${formatNumber(hours / 24)} days`,
+          `${formatNumber(hours * 60)} minutes`,
+          `${formatNumber(hours * 3600)} seconds`,
+          `${formatNumber(hours / 168)} weeks`,
+          `${formatNumber(hours / 8760)} years`,
+        ];
+      }
+
+      function cprEquivalents(value, unit) {
+        const equivalents = [];
+
+        if (unit === "mmpy") {
+          // 1 mm = 39.37007874 mil
+          const mpy = value * 39.37007874;
+
+          equivalents.push({
+            value: value,
+            unit: "mm/year",
+          });
+
+          equivalents.push({
+            value: mpy,
+            unit: "mils/year",
+          });
+        } else {
+          // 1 mil = 0.0254 mm
+          const mmpy = value * 0.0254;
+
+          equivalents.push({
+            value: value,
+            unit: "mils/year",
+          });
+
+          equivalents.push({
+            value: mmpy,
+            unit: "mm/year",
+          });
+        }
+
+        return equivalents;
+      }
+
+      /* =========================================
+       INPUT DISPLAY
+       ========================================= */
+
+      function updateInputVisibility() {
+        const target = document.getElementById("calculate-for").value;
+
+        const inputs = [
+          "input-w",
+          "input-d",
+          "input-a",
+          "input-t",
+          "input-cpr",
+        ];
+
+        inputs.forEach((id) => {
+          document.getElementById(id).style.display = "none";
+        });
+
+        /*
+            The selected variable is the unknown.
+            Every other variable becomes an input.
+        */
+
+        if (target !== "w") {
+          document.getElementById("input-w").style.display = "block";
+        }
+
+        if (target !== "d") {
+          document.getElementById("input-d").style.display = "block";
+        }
+
+        if (target !== "a") {
+          document.getElementById("input-a").style.display = "block";
+        }
+
+        if (target !== "t") {
+          document.getElementById("input-t").style.display = "block";
+        }
+
+        if (target !== "cpr") {
+          document.getElementById("input-cpr").style.display = "block";
+        }
+
+        /*
+            If calculating CPR, use the main
+            CPR output unit.
+
+            If calculating another variable,
+            the CPR input follows the main CPR
+            output unit as well.
+        */
+
+        document.getElementById("unit-cpr").value =
+          document.getElementById("cpr-unit").value;
+      }
+
+      document
+        .getElementById("calculate-for")
+        .addEventListener("change", updateInputVisibility);
+
+      document
+        .getElementById("cpr-unit")
+        .addEventListener("change", function () {
+          document.getElementById("unit-cpr").value = this.value;
+        });
+
+      updateInputVisibility();
+
+      /* =========================================
+       CALCULATE
+       ========================================= */
+
+      function calculateCPR() {
+        const target = document.getElementById("calculate-for").value;
+
+        const cprUnit = document.getElementById("cpr-unit").value;
+
+        /*
+            K is automatically selected.
+        */
+
+        const K = cprUnit === "mmpy" ? 87.6 : 534;
+
+        /* -------------------------------------
+           READ INPUTS
+           ------------------------------------- */
+
+        let W = null;
+        let D = null;
+        let A = null;
+        let T = null;
+        let CPR = null;
+
+        if (target !== "w") {
+          const value = parseFloat(document.getElementById("value-w").value);
+
+          if (!Number.isFinite(value) || value <= 0) {
+            showError("Please enter a valid weight loss.");
+            return;
+          }
+
+          W = weightToMg(value, document.getElementById("unit-w").value);
+        }
+
+        if (target !== "d") {
+          const value = parseFloat(document.getElementById("value-d").value);
+
+          if (!Number.isFinite(value) || value <= 0) {
+            showError("Please enter a valid density.");
+            return;
+          }
+
+          D = densityToGcm3(value, document.getElementById("unit-d").value);
+        }
+
+        if (target !== "a") {
+          const value = parseFloat(document.getElementById("value-a").value);
+
+          if (!Number.isFinite(value) || value <= 0) {
+            showError("Please enter a valid area.");
+            return;
+          }
+
+          A = areaToStandard(
+            value,
+            document.getElementById("unit-a").value,
+            cprUnit,
+          );
+        }
+
+        if (target !== "t") {
+          const value = parseFloat(document.getElementById("value-t").value);
+
+          if (!Number.isFinite(value) || value <= 0) {
+            showError("Please enter a valid time.");
+            return;
+          }
+
+          T = timeToHours(value, document.getElementById("unit-t").value);
+        }
+
+        if (target !== "cpr") {
+          const value = parseFloat(document.getElementById("value-cpr").value);
+
+          if (!Number.isFinite(value) || value <= 0) {
+            showError("Please enter a valid CPR.");
+            return;
+          }
+
+          CPR = value;
+
+          /*
+                CPR is converted to mm/year internally.
+                For mpy calculations we convert back
+                after calculating the requested result.
+            */
+        }
+
+        /* -------------------------------------
+           CALCULATE UNKNOWN
+           ------------------------------------- */
+
+        let result;
+        let resultUnit;
+        let equivalentValues = [];
+        let title;
+
+        if (target === "cpr") {
+          result = (K * W) / (D * A * T);
+
+          resultUnit = cprUnit === "mmpy" ? "mm/year" : "mils/year";
+
+          /*
+                If K = 534, formula directly
+                produces mils/year.
+            */
+
+          if (cprUnit === "mmpy") {
+            equivalentValues = cprEquivalents(result, "mmpy");
+          } else {
+            equivalentValues = cprEquivalents(result, "mpy");
+          }
+
+          title = "Corrosion Penetration Rate";
+        } else if (target === "w") {
+          /*
+                W = CPR × D × A × T / K
+            */
+
+          let cprForFormula;
+
+          if (cprUnit === "mmpy") {
+            cprForFormula = CPR;
+
+            result = (cprForFormula * D * A * T) / K;
+          } else {
+            /*
+                    When using mpy,
+                    K = 534 and A is in².
+                */
+
+            result = (CPR * D * A * T) / K;
+          }
+
+          resultUnit = "mg";
+
+          equivalentValues = weightEquivalents(result);
+
+          title = "Weight Loss";
+        } else if (target === "d") {
+          /*
+                D = K × W / (CPR × A × T)
+            */
+
+          result = (K * W) / (CPR * A * T);
+
+          resultUnit = "g/cm³";
+
+          equivalentValues = densityEquivalents(result);
+
+          title = "Density";
+        } else if (target === "a") {
+          /*
+                A = K × W / (CPR × D × T)
+            */
+
+          result = (K * W) / (CPR * D * T);
+
+          resultUnit = cprUnit === "mmpy" ? "cm²" : "in²";
+
+          equivalentValues = areaEquivalents(result, cprUnit);
+
+          title = "Area";
+        } else if (target === "t") {
+          /*
+                T = K × W / (CPR × D × A)
+            */
+
+          result = (K * W) / (CPR * D * A);
+
+          resultUnit = "hours";
+
+          equivalentValues = timeEquivalents(result);
+
+          title = "Time";
+        }
+
+        /* -------------------------------------
+           SHOW RESULT
+           ------------------------------------- */
+
+        document.getElementById("result-section").style.display = "block";
+
+        document.getElementById("result-title").textContent = title;
+
+        document.getElementById("result-value").textContent =
+          formatNumber(result);
+
+        document.getElementById("result-unit").textContent = resultUnit;
+
+        /* -------------------------------------
+           EQUIVALENTS
+           ------------------------------------- */
+
+        const equivalentContainer =
+          document.getElementById("equivalent-values");
+
+        equivalentContainer.innerHTML = "";
+
+        equivalentValues.forEach((item) => {
+          const row = document.createElement("div");
+          row.className = "equivalent-row";
+
+          // Handle both object and text formats safely
+          if (typeof item === "object" && item !== null) {
+            const value = item.value ?? "";
+            const unit = item.unit ?? "";
+
+            row.textContent = `${formatNumber(value)} ${unit}`;
+          } else {
+            row.textContent = item;
+          }
+
+          equivalentContainer.appendChild(row);
+        });
+        /* -------------------------------------
+           STEPS
+           ------------------------------------- */
+
+        generateSteps(target, K, cprUnit, W, D, A, T, CPR, result, resultUnit);
+
+        /*
+            Smoothly move to result.
+        */
+
+        document.getElementById("result-section").scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }
+
+      /* =========================================
+       STEP-BY-STEP
+       ========================================= */
+
+      function generateSteps(
+        target,
+        K,
+        cprUnit,
+        W,
+        D,
+        A,
+        T,
+        CPR,
+        result,
+        resultUnit,
+      ) {
+        const container = document.getElementById("calculation-steps");
+
+        container.innerHTML = "";
+
+        /*
+         * Numbers used in the step-by-step explanation.
+         *
+         * We intentionally keep more precision here than the
+         * large result display so that the substitution matches
+         * the actual calculation.
+         */
+        const stepNumber = (value) => {
+          if (!Number.isFinite(value)) {
+            return value;
+          }
+
+          return Number(value.toFixed(6)).toString();
+        };
+
+        let steps = [];
+
+        /* =========================================
+     UNIT LABELS
+     ========================================= */
+
+        const cprLabel = cprUnit === "mmpy" ? "mm/year" : "mils/year";
+
+        const areaUnit = cprUnit === "mmpy" ? "cm²" : "in²";
+
+        /* =========================================
+     CPR CALCULATION
+     ========================================= */
+
+        if (target === "cpr") {
+          steps.push({
+            title: "Original Formula",
+
+            content: `
+        CPR = K × W / (D × A × T)
+      `,
+          });
+
+          steps.push({
+            title: "Values Used",
+
+            content: `
+        K = ${stepNumber(K)}<br>
+        W = ${stepNumber(W)} mg<br>
+        D = ${stepNumber(D)} g/cm³<br>
+        A = ${stepNumber(A)} ${areaUnit}<br>
+        T = ${stepNumber(T)} hours
+      `,
+          });
+
+          steps.push({
+            title: "Substitution",
+
+            content: `
+        CPR = (${stepNumber(K)} × ${stepNumber(W)})
+        / (${stepNumber(D)} × ${stepNumber(A)} × ${stepNumber(T)})
+      `,
+          });
+
+          steps.push({
+            title: "Calculation",
+
+            content: `
+        CPR = ${stepNumber(result)} ${resultUnit}
+      `,
+          });
+        } else if (target === "w") {
+
+        /* =========================================
+     WEIGHT LOSS CALCULATION
+     ========================================= */
+          steps.push({
+            title: "Original Formula",
+
+            content: `
+        CPR = K × W / (D × A × T)
+      `,
+          });
+
+          steps.push({
+            title: "Rearranging for W",
+
+            content: `
+        W = CPR × D × A × T / K
+      `,
+          });
+
+          steps.push({
+            title: "Values Used",
+
+            content: `
+        CPR = ${stepNumber(CPR)} ${cprLabel}<br>
+        D = ${stepNumber(D)} g/cm³<br>
+        A = ${stepNumber(A)} ${areaUnit}<br>
+        T = ${stepNumber(T)} hours<br>
+        K = ${stepNumber(K)}
+      `,
+          });
+
+          steps.push({
+            title: "Substitution",
+
+            content: `
+        W = (${stepNumber(CPR)} × ${stepNumber(D)} ×
+        ${stepNumber(A)} × ${stepNumber(T)}) / ${stepNumber(K)}
+      `,
+          });
+
+          steps.push({
+            title: "Calculation",
+
+            content: `
+        W = ${stepNumber(result)} mg
+      `,
+          });
+        } else if (target === "d") {
+
+        /* =========================================
+     DENSITY CALCULATION
+     ========================================= */
+          steps.push({
+            title: "Original Formula",
+
+            content: `
+        CPR = K × W / (D × A × T)
+      `,
+          });
+
+          steps.push({
+            title: "Rearranging for D",
+
+            content: `
+        D = K × W / (CPR × A × T)
+      `,
+          });
+
+          steps.push({
+            title: "Values Used",
+
+            content: `
+        K = ${stepNumber(K)}<br>
+        W = ${stepNumber(W)} mg<br>
+        CPR = ${stepNumber(CPR)} ${cprLabel}<br>
+        A = ${stepNumber(A)} ${areaUnit}<br>
+        T = ${stepNumber(T)} hours
+      `,
+          });
+
+          steps.push({
+            title: "Substitution",
+
+            content: `
+        D = (${stepNumber(K)} × ${stepNumber(W)})
+        / (${stepNumber(CPR)} × ${stepNumber(A)} × ${stepNumber(T)})
+      `,
+          });
+
+          steps.push({
+            title: "Calculation",
+
+            content: `
+        D = ${stepNumber(result)} g/cm³
+      `,
+          });
+        } else if (target === "a") {
+
+        /* =========================================
+     AREA CALCULATION
+     ========================================= */
+          steps.push({
+            title: "Original Formula",
+
+            content: `
+        CPR = K × W / (D × A × T)
+      `,
+          });
+
+          steps.push({
+            title: "Rearranging for A",
+
+            content: `
+        A = K × W / (CPR × D × T)
+      `,
+          });
+
+          steps.push({
+            title: "Values Used",
+
+            content: `
+        K = ${stepNumber(K)}<br>
+        W = ${stepNumber(W)} mg<br>
+        CPR = ${stepNumber(CPR)} ${cprLabel}<br>
+        D = ${stepNumber(D)} g/cm³<br>
+        T = ${stepNumber(T)} hours
+      `,
+          });
+
+          steps.push({
+            title: "Substitution",
+
+            content: `
+        A = (${stepNumber(K)} × ${stepNumber(W)})
+        / (${stepNumber(CPR)} × ${stepNumber(D)} × ${stepNumber(T)})
+      `,
+          });
+
+          steps.push({
+            title: "Calculation",
+
+            content: `
+        A = ${stepNumber(result)} ${resultUnit}
+      `,
+          });
+        } else if (target === "t") {
+
+        /* =========================================
+     TIME CALCULATION
+     ========================================= */
+          steps.push({
+            title: "Original Formula",
+
+            content: `
+        CPR = K × W / (D × A × T)
+      `,
+          });
+
+          steps.push({
+            title: "Rearranging for T",
+
+            content: `
+        T = K × W / (CPR × D × A)
+      `,
+          });
+
+          steps.push({
+            title: "Values Used",
+
+            content: `
+        K = ${stepNumber(K)}<br>
+        W = ${stepNumber(W)} mg<br>
+        CPR = ${stepNumber(CPR)} ${cprLabel}<br>
+        D = ${stepNumber(D)} g/cm³<br>
+        A = ${stepNumber(A)} ${areaUnit}
+      `,
+          });
+
+          steps.push({
+            title: "Substitution",
+
+            content: `
+        T = (${stepNumber(K)} × ${stepNumber(W)})
+        / (${stepNumber(CPR)} × ${stepNumber(D)} × ${stepNumber(A)})
+      `,
+          });
+
+          steps.push({
+            title: "Calculation",
+
+            content: `
+        T = ${stepNumber(result)} hours
+      `,
+          });
+        }
+
+        /* =========================================
+     DISPLAY ALL STEPS
+     ========================================= */
+
+        steps.forEach((step, index) => {
+          const card = document.createElement("div");
+
+          card.className = "calculation-step";
+
+          card.innerHTML = `
+      <div class="step-number">
+        ${index + 1}
+      </div>
+
+      <div class="step-content">
+
+        <h4>
+          ${step.title}
+        </h4>
+
+        <p>
+          ${step.content}
+        </p>
+
+      </div>
+    `;
+
+          container.appendChild(card);
+        });
+      }
+
+      /* =========================================
+       ERROR MESSAGE
+       ========================================= */
+
+      function showError(message) {
+        alert(message);
+      }
+    </script>
+  </body>
+</html>

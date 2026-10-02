@@ -1,0 +1,687 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Concept Analysis | Chemora</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+  </head>
+
+  <body>
+    <main class="page concept-page">
+      <!-- HEADER -->
+
+      <header class="page-header">
+        <a href="/cpr" class="back-button"> ← </a>
+
+        <div>
+          <p class="eyebrow">CORROSION</p>
+          <h1>Concept Analysis</h1>
+        </div>
+      </header>
+
+      <!-- INTRO -->
+
+      <section class="concept-intro">
+        <span class="concept-badge"> 🧠 UNDERSTAND THE CONCEPT </span>
+
+        <h2>Corrosion Penetration Rate</h2>
+
+        <p>
+          Understand the corrosion science behind CPR, how corrosion occurs,
+          what affects its rate, and how CPR is used in engineering.
+        </p>
+      </section>
+
+      <!-- 1 -->
+
+      <section class="concept-card">
+        <button class="concept-toggle" onclick="toggleConcept(this)">
+          <div class="concept-title">
+            <span class="concept-number">01</span>
+
+            <div>
+              <span class="concept-label"> FUNDAMENTALS </span>
+
+              <h3>What is Corrosion?</h3>
+            </div>
+          </div>
+
+          <span class="toggle-icon">+</span>
+        </button>
+
+        <div class="concept-content">
+          <p>
+            Corrosion is the gradual deterioration of a metal due to chemical or
+            electrochemical interaction with its surrounding environment.
+          </p>
+
+          <div class="key-point">
+            <strong>Key Idea</strong>
+
+            <p>
+              Corrosion causes a metal to lose material over time, reducing its
+              thickness and potentially affecting its strength and life.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2 -->
+
+      <section class="concept-card">
+        <button class="concept-toggle" onclick="toggleConcept(this)">
+          <div class="concept-title">
+            <span class="concept-number">02</span>
+
+            <div>
+              <span class="concept-label"> THEORY </span>
+
+              <h3>Electrochemical Theory</h3>
+            </div>
+          </div>
+
+          <span class="toggle-icon">+</span>
+        </button>
+
+        <div class="concept-content">
+          <p>
+            Electrochemical corrosion occurs when anodic and cathodic reactions
+            take place on a metal surface in the presence of an electrolyte.
+          </p>
+
+          <div class="reaction-card">
+            <h4>Anodic Reaction</h4>
+
+            <div class="reaction">M → Mⁿ⁺ + ne⁻</div>
+
+            <p>
+              Metal atoms lose electrons and enter the surrounding electrolyte
+              as ions.
+            </p>
+          </div>
+
+          <div class="reaction-card">
+            <h4>Cathodic Reaction</h4>
+
+            <p>
+              The electrons released at the anodic region are consumed by a
+              reduction reaction at the cathodic region.
+            </p>
+          </div>
+
+          <div class="key-point">
+            <strong>Key Idea</strong>
+
+            <p>
+              The anodic region is where metal dissolution occurs, while the
+              cathodic region supports the reduction reaction.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3 -->
+
+      <section class="concept-card">
+        <button class="concept-toggle" onclick="toggleConcept(this)">
+          <div class="concept-title">
+            <span class="concept-number">03</span>
+
+            <div>
+              <span class="concept-label"> CORROSION TYPES </span>
+
+              <h3>Differential Metal Corrosion</h3>
+            </div>
+          </div>
+
+          <span class="toggle-icon">+</span>
+        </button>
+
+        <div class="concept-content">
+          <p>
+            When two different metals are electrically connected in the presence
+            of an electrolyte, an electrochemical cell can form.
+          </p>
+
+          <p>
+            The more active metal can behave as the anodic material and undergo
+            corrosion, while the more noble metal behaves as the cathodic
+            material.
+          </p>
+
+          <div class="key-point">
+            <strong>Engineering Significance</strong>
+
+            <p>
+              Contact between dissimilar metals can therefore influence the
+              corrosion behaviour of a structure.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4 -->
+
+      <section class="concept-card">
+        <button class="concept-toggle" onclick="toggleConcept(this)">
+          <div class="concept-title">
+            <span class="concept-number">04</span>
+
+            <div>
+              <span class="concept-label"> CORROSION TYPES </span>
+
+              <h3>Differential Aeration Corrosion</h3>
+            </div>
+          </div>
+
+          <span class="toggle-icon">+</span>
+        </button>
+
+        <div class="concept-content">
+          <p>
+            Differential aeration corrosion occurs when different areas of the
+            same metal surface are exposed to different concentrations of
+            oxygen.
+          </p>
+
+          <p>
+            The region with lower oxygen concentration can become anodic
+            relative to the region with higher oxygen concentration.
+          </p>
+
+          <div class="key-point">
+            <strong>Remember</strong>
+
+            <p>
+              Difference in oxygen concentration can create anodic and cathodic
+              regions on the same metal.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5 -->
+
+      <section class="concept-card">
+        <button class="concept-toggle" onclick="toggleConcept(this)">
+          <div class="concept-title">
+            <span class="concept-number">05</span>
+
+            <div>
+              <span class="concept-label"> RATE </span>
+
+              <h3>Factors Affecting Corrosion Rate</h3>
+            </div>
+          </div>
+
+          <span class="toggle-icon">+</span>
+        </button>
+
+        <div class="concept-content">
+          <ul class="concept-list">
+            <li>
+              <strong>Nature of metal:</strong>
+              Different metals have different tendencies to undergo corrosion.
+            </li>
+
+            <li>
+              <strong>Environment:</strong>
+              The surrounding medium can influence corrosion.
+            </li>
+
+            <li>
+              <strong>Temperature:</strong>
+              Changes in temperature can affect reaction rates.
+            </li>
+
+            <li>
+              <strong>Moisture:</strong>
+              Presence of water can support electrochemical corrosion processes.
+            </li>
+
+            <li>
+              <strong>Oxygen concentration:</strong>
+              Differences in oxygen availability can create differential
+              aeration conditions.
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 6 -->
+
+      <section class="concept-card">
+        <button class="concept-toggle" onclick="toggleConcept(this)">
+          <div class="concept-title">
+            <span class="concept-number">06</span>
+
+            <div>
+              <span class="concept-label"> PREVENTION </span>
+
+              <h3>Corrosion Control</h3>
+            </div>
+          </div>
+
+          <span class="toggle-icon">+</span>
+        </button>
+
+        <div class="concept-content">
+          <p>
+            Corrosion can be controlled by reducing the interaction between the
+            metal and its environment or by modifying the electrochemical
+            conditions.
+          </p>
+
+          <div class="control-grid">
+            <div class="mini-card">
+              <h4>Protective Coatings</h4>
+              <p>
+                Create a barrier between the metal and corrosive environment.
+              </p>
+            </div>
+
+            <div class="mini-card">
+              <h4>Material Selection</h4>
+              <p>Selecting suitable materials can reduce corrosion problems.</p>
+            </div>
+
+            <div class="mini-card">
+              <h4>Cathodic Protection</h4>
+              <p>Controls the electrochemical behaviour of the metal.</p>
+            </div>
+
+            <div class="mini-card">
+              <h4>Environmental Control</h4>
+              <p>Controlling environmental conditions can reduce corrosion.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 7 -->
+
+      <section class="concept-card">
+        <button class="concept-toggle" onclick="toggleConcept(this)">
+          <div class="concept-title">
+            <span class="concept-number">07</span>
+
+            <div>
+              <span class="concept-label"> CPR </span>
+
+              <h3>What is CPR?</h3>
+            </div>
+          </div>
+
+          <span class="toggle-icon">+</span>
+        </button>
+
+        <div class="concept-content">
+          <p>
+            Corrosion Penetration Rate (CPR) represents the rate at which a
+            metal loses thickness due to corrosion.
+          </p>
+
+          <div class="formula-box">
+            <div class="formula">CPR = K × W / (D × A × T)</div>
+          </div>
+
+          <div class="key-point">
+            <strong>Engineering Meaning</strong>
+
+            <p>
+              CPR allows engineers to express corrosion damage as a rate of
+              material thickness loss over time.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 8 -->
+
+      <section class="concept-card">
+        <button class="concept-toggle" onclick="toggleConcept(this)">
+          <div class="concept-title">
+            <span class="concept-number">08</span>
+
+            <div>
+              <span class="concept-label"> FORMULA </span>
+
+              <h3>CPR Variables</h3>
+            </div>
+          </div>
+
+          <span class="toggle-icon">+</span>
+        </button>
+
+        <div class="concept-content">
+          <div class="variable-row">
+            <span>CPR</span>
+            <p>Corrosion penetration rate</p>
+          </div>
+
+          <div class="variable-row">
+            <span>K</span>
+            <p>Constant determined by the selected CPR unit</p>
+          </div>
+
+          <div class="variable-row">
+            <span>W</span>
+            <p>Weight loss of the metal</p>
+          </div>
+
+          <div class="variable-row">
+            <span>D</span>
+            <p>Density of the metal</p>
+          </div>
+
+          <div class="variable-row">
+            <span>A</span>
+            <p>Exposed surface area</p>
+          </div>
+
+          <div class="variable-row">
+            <span>T</span>
+            <p>Exposure time</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 9 -->
+
+      <section class="concept-card">
+        <button class="concept-toggle" onclick="toggleConcept(this)">
+          <div class="concept-title">
+            <span class="concept-number">09</span>
+
+            <div>
+              <span class="concept-label"> ANALYSIS </span>
+
+              <h3>Why Each Variable Matters</h3>
+            </div>
+          </div>
+
+          <span class="toggle-icon">+</span>
+        </button>
+
+        <div class="concept-content">
+          <div class="variable-explanation">
+            <h4>Weight Loss — W</h4>
+            <p>
+              Greater mass loss indicates more material has been removed from
+              the metal during exposure.
+            </p>
+          </div>
+
+          <div class="variable-explanation">
+            <h4>Density — D</h4>
+            <p>
+              Density connects the measured mass loss with the corresponding
+              volume of metal lost.
+            </p>
+          </div>
+
+          <div class="variable-explanation">
+            <h4>Area — A</h4>
+            <p>
+              The same amount of material loss distributed over a larger area
+              corresponds to a different penetration rate.
+            </p>
+          </div>
+
+          <div class="variable-explanation">
+            <h4>Time — T</h4>
+            <p>
+              CPR expresses material loss as a rate, so the exposure duration is
+              an important part of the calculation.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 10 -->
+
+      <section class="concept-card">
+        <button class="concept-toggle" onclick="toggleConcept(this)">
+          <div class="concept-title">
+            <span class="concept-number">10</span>
+
+            <div>
+              <span class="concept-label"> UNITS </span>
+
+              <h3>Standard CPR Units</h3>
+            </div>
+          </div>
+
+          <span class="toggle-icon">+</span>
+        </button>
+
+        <div class="concept-content">
+          <div class="unit-table">
+            <div class="unit-row unit-header">
+              <span>Parameter</span>
+              <span>Standard Unit</span>
+            </div>
+
+            <div class="unit-row">
+              <span>Weight (W)</span>
+              <span>mg</span>
+            </div>
+
+            <div class="unit-row">
+              <span>Density (D)</span>
+              <span>g/cm³</span>
+            </div>
+
+            <div class="unit-row">
+              <span>Area (A)</span>
+              <span>cm² / in²</span>
+            </div>
+
+            <div class="unit-row">
+              <span>Time (T)</span>
+              <span>hours</span>
+            </div>
+          </div>
+
+          <div class="key-point">
+            <strong>Important</strong>
+
+            <p>
+              The required standard area unit depends on the selected CPR output
+              unit.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 11 -->
+
+      <section class="concept-card">
+        <button class="concept-toggle" onclick="toggleConcept(this)">
+          <div class="concept-title">
+            <span class="concept-number">11</span>
+
+            <div>
+              <span class="concept-label"> MATHEMATICS </span>
+
+              <h3>Rearranging the CPR Equation</h3>
+            </div>
+          </div>
+
+          <span class="toggle-icon">+</span>
+        </button>
+
+        <div class="concept-content">
+          <div class="formula-list">
+            <div>
+              <span>For CPR</span>
+              <strong>CPR = K × W / (D × A × T)</strong>
+            </div>
+
+            <div>
+              <span>For W</span>
+              <strong>W = CPR × D × A × T / K</strong>
+            </div>
+
+            <div>
+              <span>For D</span>
+              <strong>D = K × W / (CPR × A × T)</strong>
+            </div>
+
+            <div>
+              <span>For A</span>
+              <strong>A = K × W / (CPR × D × T)</strong>
+            </div>
+
+            <div>
+              <span>For T</span>
+              <strong>T = K × W / (CPR × D × A)</strong>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 12 -->
+
+      <section class="concept-card">
+        <button class="concept-toggle" onclick="toggleConcept(this)">
+          <div class="concept-title">
+            <span class="concept-number">12</span>
+
+            <div>
+              <span class="concept-label"> ENGINEERING </span>
+
+              <h3>Engineering Interpretation</h3>
+            </div>
+          </div>
+
+          <span class="toggle-icon">+</span>
+        </button>
+
+        <div class="concept-content">
+          <p>
+            CPR is useful for comparing the rate of metal thickness loss under
+            different corrosion conditions.
+          </p>
+
+          <div class="key-point">
+            <strong>Think Like an Engineer</strong>
+
+            <p>
+              A CPR value is not just a number. It represents a rate of material
+              loss and can be used when considering the service life and
+              corrosion behaviour of metallic components.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 13 -->
+
+      <section class="concept-card exam-card">
+        <button class="concept-toggle" onclick="toggleConcept(this)">
+          <div class="concept-title">
+            <span class="concept-number">13</span>
+
+            <div>
+              <span class="concept-label"> EXAM </span>
+
+              <h3>Exam-Level Takeaways</h3>
+            </div>
+          </div>
+
+          <span class="toggle-icon">+</span>
+        </button>
+
+        <div class="concept-content">
+          <ul class="concept-list">
+            <li>
+              Corrosion is the deterioration of metal due to chemical or
+              electrochemical interaction with the environment.
+            </li>
+
+            <li>
+              Electrochemical corrosion involves anodic and cathodic reactions.
+            </li>
+
+            <li>Metal dissolution occurs at the anodic region.</li>
+
+            <li>
+              Differential aeration results from differences in oxygen
+              concentration.
+            </li>
+
+            <li>CPR represents the rate of metal thickness loss.</li>
+
+            <li>
+              Always use compatible units before applying the CPR equation.
+            </li>
+
+            <li>
+              CPR can be rearranged to calculate W, D, A or T when the other
+              variables are known.
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- CALCULATOR BUTTON -->
+
+      <section class="concept-action">
+        <p>Ready to solve a CPR problem?</p>
+
+        <a href="/cpr/calculator" class="primary-button">
+          <span>Open CPR Calculator</span>
+          <span class="arrow">→</span>
+        </a>
+      </section>
+
+      <footer>
+        <p>Made for Engineering Students</p>
+      </footer>
+    </main>
+
+    <script>
+      function toggleConcept(button) {
+        const card = button.parentElement;
+        const content = card.querySelector(".concept-content");
+        const icon = button.querySelector(".toggle-icon");
+
+        const isOpen = card.classList.contains("open");
+
+        document.querySelectorAll(".concept-card.open").forEach((openCard) => {
+          openCard.classList.remove("open");
+
+          const openContent = openCard.querySelector(".concept-content");
+
+          const openIcon = openCard.querySelector(".toggle-icon");
+
+          openContent.style.maxHeight = null;
+          openIcon.textContent = "+";
+        });
+
+        if (!isOpen) {
+          card.classList.add("open");
+
+          content.style.maxHeight = content.scrollHeight + "px";
+
+          icon.textContent = "−";
+        }
+      }
+    </script>
+  </body>
+</html>

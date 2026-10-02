@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>CPR | Chemora</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+  </head>
+
+  <body>
+    <main class="page cpr-page">
+      <!-- HEADER -->
+
+      <header class="page-header">
+        <a href="/semester" class="back-button"> ← </a>
+
+        <div>
+          <p class="eyebrow">CORROSION</p>
+          <h1>Penetration Rate</h1>
+        </div>
+      </header>
+
+      <!-- CPR INTRO -->
+
+      <section class="cpr-hero">
+        <div class="cpr-badge">CPR</div>
+
+        <h2>Corrosion Penetration Rate</h2>
+
+        <p class="cpr-description">
+          A measure of the rate at which a metal loses thickness due to
+          corrosion.
+        </p>
+
+        <!-- FORMULA -->
+
+        <div class="cpr-formula-card">
+          <p class="formula-title">MAIN FORMULA</p>
+
+          <div class="cpr-equation">
+            <span class="equation-left"> CPR = </span>
+
+            <span class="fraction">
+              <span class="numerator"> K × W </span>
+
+              <span class="fraction-line"></span>
+
+              <span class="denominator"> D × A × T </span>
+            </span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ACTIONS -->
+
+      <section class="cpr-actions">
+        <div class="section-heading">
+          <div>
+            <p class="section-label">CPR</p>
+
+            <h2>What would you like to do?</h2>
+          </div>
+        </div>
+
+        <!-- CALCULATOR -->
+
+        <a href="/cpr/calculator" class="cpr-action-card">
+          <div class="action-icon calculator-icon">🧮</div>
+
+          <div class="action-content">
+            <span class="card-label"> CALCULATE </span>
+
+            <h3>Calculate Using Formula</h3>
+
+            <p>Solve for CPR, weight loss, density, area or time.</p>
+          </div>
+
+          <span class="card-arrow"> → </span>
+        </a>
+
+        <!-- CONCEPT -->
+
+        <a href="/cpr/concept" class="cpr-action-card">
+          <div class="action-icon concept-icon">🧠</div>
+
+          <div class="action-content">
+            <span class="card-label"> UNDERSTAND </span>
+
+            <h3>Concept Analysis</h3>
+
+            <p>Understand the corrosion science behind CPR.</p>
+          </div>
+
+          <span class="card-arrow"> → </span>
+        </a>
+      </section>
+
+      <footer>
+        <p>Made for Engineering Students</p>
+      </footer>
+    </main>
+  </body>
+</html>

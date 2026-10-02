@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>1st Semester | Chemora</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+  </head>
+
+  <body>
+    <main class="page">
+      <header class="page-header">
+        <a href="/" class="back-button"> ← </a>
+
+        <div>
+          <p class="eyebrow">CHEMORA</p>
+          <h1>1st Semester</h1>
+        </div>
+      </header>
+
+      <section class="semester-heading">
+        <h2>Engineering Chemistry</h2>
+
+        <p>
+          Select a formula to calculate or understand its underlying concept.
+        </p>
+      </section>
+
+      <section class="formula-section">
+        <div class="section-heading">
+          <div>
+            <p class="section-label">1ST SEMESTER</p>
+
+            <h2>Formula Sheet</h2>
+          </div>
+
+          <span class="formula-count"> 1 Formula </span>
+        </div>
+
+        <a href="/cpr" class="formula-card">
+          <div class="formula-icon">⚗️</div>
+
+          <div class="formula-content">
+            <span class="card-label"> CORROSION </span>
+
+            <h2>Corrosion Penetration Rate</h2>
+
+            <div class="formula-display">CPR = K × W / (D × A × T)</div>
+
+            <p>
+              Calculate corrosion penetration rate and solve for any variable.
+            </p>
+          </div>
+
+          <span class="card-arrow"> → </span>
+        </a>
+      </section>
+
+      <footer>
+        <p>Made for Engineering Students</p>
+      </footer>
+    </main>
+  </body>
+</html>
