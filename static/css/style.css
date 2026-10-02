@@ -2765,3 +2765,42 @@ button {
     transition-duration: 0.01ms !important;
   }
 }
+/* Project Credits */
+
+.site-footer {
+  text-align: center;
+}
+
+.project-credit {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+}
+
+.project-credit > span {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+
+.project-credit p {
+  margin: 0;
+  font-size: 0.8rem;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+.project-credit strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.project-credit small {
+  display: block;
+  margin-top: 5px;
+  font-size: 0.7rem;
+  color: var(--muted);
+}
